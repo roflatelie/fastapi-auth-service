@@ -33,7 +33,7 @@ target_metadata = Base.metadata
 from alembic import context
 
 config = context.config
-config.set_main_option('sqlalchemy.url', "postgresql+asyncpg://roflateliedbuser:password@db:5432/authservicepostgres")
+config.set_main_option('sqlalchemy.url', str(URL.create(**settings.get_db_creds)))
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
